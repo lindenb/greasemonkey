@@ -8,6 +8,8 @@
 // ==/UserScript==
 
 var hide_them=[];
+var hide_tokens=["puppies","my dog","my cat","my daughter","and my boyfriend","girlfriend and i"," dog ",
+	"grandaughter","kitty"];
 
 var nodes = document.body.getElementsByTagName('div');
 for (var J=nodes.length-1;  J >= 0;  J--)
@@ -44,12 +46,14 @@ for (var J=nodes.length-1;  J >= 0;  J--)
 	        var text = under.textContent;
 	        if(text==null) continue;
 	        text=text.toLowerCase();
-
-	        if(text.indexOf("my dog")!=-1) break;
-	        if(text.indexOf("my cat")!=-1) break;
-		if(text.indexOf("my daughter")!=-1) break;
-		if(text.indexOf("and my boyfriend")!=-1) break;
-		if(text.indexOf("girlfriend and i")!=-1) break;
+		
+		var m=0;
+		for(m=0;m< hide_tokens.length;++m)
+			{
+			if( text.indexOf(hide_tokens[m])!=-1) break;
+			}
+		if(m!=hide_tokens.length) break;
+	       
 	    	}
 	    if(k!=unders.length)
 	    	{
