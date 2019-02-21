@@ -14,7 +14,6 @@ for(;;) {
     var e = iter.iterateNext();
     if(e==null) break;
     src= e.nodeValue;
-  console.log(src);
   break;
 }
 
@@ -26,6 +25,16 @@ for(;;) {
   break;
 }
 
+if(menu==null) {
+  iter = document.evaluate("//li[@data-context='explore']",document,null,XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
+for(;;) {
+    var e = iter.iterateNext();
+    if(e==null) break;
+    menu= e;
+  break;
+  }
+}
+  
 
 if(menu!=null && src!=null) {
   var a=document.createElement("a");
@@ -39,3 +48,4 @@ if(menu!=null && src!=null) {
 } else {
  console.log("greasemonkey failed"); 
 }
+
